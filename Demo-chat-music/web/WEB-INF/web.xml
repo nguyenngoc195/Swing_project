@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+         version="2.5">
+
+    <filter>
+        <filter-name>ObjectifyFilter</filter-name>
+        <filter-class>com.googlecode.objectify.ObjectifyFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>ObjectifyFilter</filter-name>
+        <url-pattern>*</url-pattern>
+    </filter-mapping>
+    <filter>
+        <filter-name>CorsFilter</filter-name>
+        <filter-class>com.controller.CORSFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>CorsFilter</filter-name>
+        <url-pattern>*</url-pattern>
+    </filter-mapping>
+    <filter>
+        <filter-name>AdminAuthen</filter-name>
+        <filter-class>com.controller.AdminAuthFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>AdminAuthen</filter-name>
+        <url-pattern>/_api/v1/members/admins/key/*</url-pattern>
+        <url-pattern>/_api/v1/members/admin/*</url-pattern>
+        <url-pattern>/_api/v1/categories/*</url-pattern>
+        <url-pattern>/_api/v1/songcates/admin/*</url-pattern>
+        <url-pattern>/_api/v1/songs/admin/*</url-pattern>
+    </filter-mapping>
+<!--Chatroom Filter-->
+    <filter>
+        <filter-name>ChatroomFilter</filter-name>
+        <filter-class>com.controller.ChatroomFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>ChatroomFilter</filter-name>
+        <url-pattern>/chatroom</url-pattern>
+    </filter-mapping>
+    <servlet>
+        <servlet-name>Img</servlet-name>
+        <servlet-class>com.utility.UpLoadHandle</servlet-class>
+
+<!--================================-->
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Img</servlet-name>
+        <url-pattern>/_api/v1/image</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>Get</servlet-name>
+        <servlet-class>com.utility.GetUploadUrl</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Get</servlet-name>
+        <url-pattern>/_api/v1/image/get</url-pattern>
+    </servlet-mapping>
+
+
+
+
+
+    <servlet>
+        <servlet-name>MemberEndpoint</servlet-name>
+        <servlet-class>com.controller.MemberEndpoint</servlet-class>
+
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>MemberEndpoint</servlet-name>
+        <url-pattern>/_api/v1/members/*</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>AdminEndpoint</servlet-name>
+        <servlet-class>com.controller.AdminEndpoint</servlet-class>
+
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AdminEndpoint</servlet-name>
+        <url-pattern>/_api/v1/admins/*</url-pattern>
+    </servlet-mapping>
+
+
+    <servlet>
+        <servlet-name>CategoryEndpoint</servlet-name>
+        <servlet-class>com.controller.CategoryEndpoint</servlet-class>
+
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CategoryEndpoint</servlet-name>
+        <url-pattern>/_api/v1/categories/*</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>SongCateEndpoint</servlet-name>
+        <servlet-class>com.controller.SongCateEndpoint</servlet-class>
+
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SongCateEndpoint</servlet-name>
+        <url-pattern>/_api/v1/songcates/*</url-pattern>
+    </servlet-mapping>
+
+
+
+    <servlet>
+        <servlet-name>SongEndpoint</servlet-name>
+        <servlet-class>com.controller.SongEndpoint</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SongEndpoint</servlet-name>
+        <url-pattern>/_api/v1/songs/*</url-pattern>
+    </servlet-mapping>
+
+
+    <servlet>
+        <servlet-name>GetUploadUrl</servlet-name>
+        <servlet-class>com.utility.GetUploadUrl</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>GetUploadUrl</servlet-name>
+        <url-pattern>/image/geturl</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>UploadHandle</servlet-name>
+        <servlet-class>com.utility.UpLoadHandle</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UploadHandle</servlet-name>
+        <url-pattern>/image/upload</url-pattern>
+    </servlet-mapping>
+
+<!--================================-->
+    <servlet>
+        <servlet-name>Chatroom</servlet-name>
+        <servlet-class>com.controller.ChatroomEndpoint</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Chatroom</servlet-name>
+        <url-pattern>/chatroom</url-pattern>
+    </servlet-mapping>
+
+
+    <welcome-file-list>
+        <welcome-file>registerForm.jsp</welcome-file>
+    </welcome-file-list>
+
+</web-app>
